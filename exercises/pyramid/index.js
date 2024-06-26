@@ -14,6 +14,15 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+  return Array.from({ length: n })
+    .map((_, row) => {
+      const numberPounds = row * 2 + 1;
+      const padWith = Math.floor((n * 2 - numberPounds) / 2);
+      const padding = padWith > 0 ? ' '.repeat(padWith) : '';
+      return padding + '#'.repeat(numberPounds) + padding;
+    })
+    .forEach((printout) => console.log(printout));
+}
 
 module.exports = pyramid;
