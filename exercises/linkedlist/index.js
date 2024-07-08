@@ -86,6 +86,41 @@ class LinkedList {
     last.next = newNode;
   }
 
+  getAt(at) {
+    let index = 0;
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (at === index) {
+        return currentNode;
+      }
+
+      currentNode = currentNode.next;
+      index++;
+    }
+
+    return null;
+  }
+
+  removeAt(index) {
+    if (!this.head) {
+      return;
+    }
+
+    if (index === 0) {
+      this.head = this.head.next;
+      return;
+    }
+
+    let prevNode = this.getAt(index - 1);
+
+    if (!prevNode || !prevNode.next) {
+      return;
+    }
+
+    prevNode.next = prevNode.next.next;
+  }
+
   clear() {
     this.head = null;
   }
